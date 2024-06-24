@@ -1,4 +1,4 @@
-name: Publish release package to the Maven Central Repository
+name: maven-publish-release
 on:
   release:
     types: [ created ]
@@ -13,11 +13,11 @@ jobs:
           cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
           # Verify gpg secret key
           gpg --list-secret-keys --keyid-format LONG
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
-          java-version: 17
+          java-version: 21
           distribution: 'temurin'
           cache: maven
           server-id: ossrh

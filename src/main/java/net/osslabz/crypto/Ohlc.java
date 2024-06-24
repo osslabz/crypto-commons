@@ -11,15 +11,14 @@ import java.time.ZonedDateTime;
 
 
 @Data
-@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Ohlc {
 
+    @EqualsAndHashCode.Include
     private OhlcAsset asset;
-
-    private ZonedDateTime updateTime;
 
     @EqualsAndHashCode.Include
     private ZonedDateTime openTime;
@@ -40,11 +39,5 @@ public class Ohlc {
 
     private Long numTrades;
 
-    public CurrencyPair getCurrencyPair() {
-        return this.asset.currencyPair();
-    }
-
-    public Interval getInterval() {
-        return this.asset.interval();
-    }
+    private ZonedDateTime updateTime;
 }
