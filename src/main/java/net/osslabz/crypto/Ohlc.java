@@ -35,9 +35,36 @@ public class Ohlc {
 
     private BigDecimal avgPrice;
 
+    private BigDecimal quantity;
+
     private BigDecimal volume;
 
     private Long numTrades;
 
     private ZonedDateTime updateTime;
+
+
+    public TradingAsset tradingAsset() {
+        return asset.tradingAsset();
+    }
+
+    public Exchange exchange() {
+        return asset.exchange();
+    }
+
+    public CurrencyPair currencyPair() {
+        return asset.currencyPair();
+    }
+
+    public Interval interval() {
+        return asset.interval();
+    }
+
+    public String baseCurrencyCode() {
+        return currencyPair().baseCurrencyCode();
+    }
+
+    public String counterCurrencyCode() {
+        return currencyPair().counterCurrencyCode();
+    }
 }

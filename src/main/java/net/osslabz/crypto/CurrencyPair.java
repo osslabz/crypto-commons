@@ -1,6 +1,8 @@
 package net.osslabz.crypto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Objects;
 
 /**
@@ -16,6 +18,7 @@ public record CurrencyPair(String baseCurrencyCode, String counterCurrencyCode) 
         Objects.requireNonNull(counterCurrencyCode, "counterCurrencyCode cannot be null");
     }
 
+    @JsonIgnore
     public String getLabel() {
         return "%s-%s".formatted(this.baseCurrencyCode, this.counterCurrencyCode);
     }

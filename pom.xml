@@ -5,7 +5,7 @@
 
     <groupId>net.osslabz</groupId>
     <artifactId>crypto-commons</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Provides common functionality for some of my crypto related projects.
@@ -60,6 +60,15 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.16</version>
+        </dependency>
+
+
+        <!-- customize serialization -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.2</version>
+            <optional>true</optional>
         </dependency>
 
         <!-- test dependencies -->

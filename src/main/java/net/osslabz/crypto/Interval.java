@@ -1,7 +1,10 @@
 package net.osslabz.crypto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.Objects;
 
 
 public enum Interval {
@@ -21,8 +24,15 @@ public enum Interval {
         this.duration = duration;
     }
 
+    @JsonIgnore
     public Duration getDuration() {
         return this.duration;
+    }
+
+
+    public static Interval ofDuration(Duration duration) {
+
+        return Arrays.stream(Interval.values()).filter(i -> Objects.equals(duration, i.getDuration())).findAny().orElseThrow();
     }
 
     public static Interval ofMillis(Long millis) {
