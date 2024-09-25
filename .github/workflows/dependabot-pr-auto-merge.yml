@@ -18,7 +18,7 @@ jobs:
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.PAT_DEPENDABOT_PR_AUTO_MERGE}}
+          GH_TOKEN: ${{secrets.PAT_DEPENDABOT_PR_AUTO_MERGE}}
 
       - name: dependabot-pr-auto-merge
         run: gh pr merge --auto --merge "$PR_URL"
