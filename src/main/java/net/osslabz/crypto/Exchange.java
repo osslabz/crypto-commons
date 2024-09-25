@@ -11,6 +11,8 @@ public enum Exchange {
 
     MEXC,
 
-    LATOKEN
+    LATOKEN,
+
+    POLONIEX
 
 }

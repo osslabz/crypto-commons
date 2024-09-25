@@ -11,11 +11,10 @@ import java.util.Objects;
  * @param currencyPair
  */
 public record TradingAsset(Exchange exchange, CurrencyPair currencyPair) {
+
     public TradingAsset {
         Objects.requireNonNull(exchange, "exchange cannot be null");
         Objects.requireNonNull(currencyPair, "currencyPair cannot be null");
-        Objects.requireNonNull(currencyPair.baseCurrencyCode(), "currencyPair.baseCurrencyCode cannot be null");
-        Objects.requireNonNull(currencyPair.counterCurrencyCode(), "currencyPair.counterCurrencyCode cannot be null");
     }
 
     public TradingAsset(Exchange exchange, String baseCurrencyCode, String counterCurrencyCode) {

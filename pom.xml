@@ -63,7 +63,6 @@
         </dependency>
 
 
-        <!-- customize serialization -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -75,14 +74,14 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.11.0</version>
+            <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
         <!-- default logging impl for tests -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.5.8</version>
+            <version>1.5.6</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

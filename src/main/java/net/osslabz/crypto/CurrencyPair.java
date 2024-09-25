@@ -18,6 +18,16 @@ public record CurrencyPair(String baseCurrencyCode, String counterCurrencyCode) 
         Objects.requireNonNull(counterCurrencyCode, "counterCurrencyCode cannot be null");
     }
 
+    public static CurrencyPair fromString(String currencyPair) {
+        Objects.requireNonNull(currencyPair, "currencyPair cannot be null");
+        if (!currencyPair.contains("-")) {
+            throw new IllegalArgumentException("currencyPair must contain '-'");
+        }
+        String[] split = currencyPair.split("-");
+
+        return new CurrencyPair(split[0], split[1]);
+    }
+
     @JsonIgnore
     public String getLabel() {
         return "%s-%s".formatted(this.baseCurrencyCode, this.counterCurrencyCode);

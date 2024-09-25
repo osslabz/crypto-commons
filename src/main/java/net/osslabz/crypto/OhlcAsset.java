@@ -2,7 +2,18 @@ package net.osslabz.crypto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.Objects;
+
 public record OhlcAsset(TradingAsset tradingAsset, Interval interval) {
+
+    public OhlcAsset {
+        Objects.requireNonNull(tradingAsset, "tradingAsset cannot be null");
+        Objects.requireNonNull(interval, "interval cannot be null");
+    }
+
+    public OhlcAsset(Exchange exchange, String baseCurrencyCode, String counterCurrencyCode, Interval interval) {
+        this(new TradingAsset(exchange, new CurrencyPair(baseCurrencyCode, counterCurrencyCode)), interval);
+    }
 
     public Exchange exchange() {
         return tradingAsset.exchange();
@@ -10,6 +21,14 @@ public record OhlcAsset(TradingAsset tradingAsset, Interval interval) {
 
     public CurrencyPair currencyPair() {
         return tradingAsset.currencyPair();
+    }
+
+    public String baseCurrencyCode() {
+        return currencyPair().baseCurrencyCode();
+    }
+
+    public String counterCurrencyCode() {
+        return currencyPair().counterCurrencyCode();
     }
 
     @JsonIgnore
