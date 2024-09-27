@@ -67,4 +67,12 @@ public class Ohlc {
     public String counterCurrencyCode() {
         return currencyPair().counterCurrencyCode();
     }
+
+    public boolean isBullish() {
+        return this.openPrice != null && this.closePrice != null && this.openPrice.compareTo(this.closePrice) < 0;
+    }
+
+    public boolean isBearish() {
+        return this.openPrice != null && this.closePrice != null && this.openPrice.compareTo(this.closePrice) > 0;
+    }
 }
