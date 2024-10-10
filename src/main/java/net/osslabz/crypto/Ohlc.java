@@ -75,4 +75,8 @@ public class Ohlc {
     public boolean isBearish() {
         return this.openPrice != null && this.closePrice != null && this.openPrice.compareTo(this.closePrice) > 0;
     }
+
+    public BigDecimal getPriceDiffAsPercentageOpenToClose() {
+        return CryptoMathUtils.getPriceDiffAsPercentage(this.closePrice, this.openPrice);
+    }
 }
