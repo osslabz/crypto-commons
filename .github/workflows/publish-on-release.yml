@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
       - name: checkout
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: mai
 
       - name: setup-jdk
         uses: actions/setup-java@v4
@@ -27,7 +27,7 @@ jobs:
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
-          gpg-private-key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+          gpg-private-key: MAVEN_GPG_PRIVATE_KEY
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       - uses: qoomon/actions--setup-git@v1
@@ -39,4 +39,5 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          MAVEN_GPG_PRIVATE_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
