@@ -34,7 +34,7 @@ jobs:
           server-password: MAVEN_PASSWORD
 
       - name: publish-on-maven-central
-        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} -P osslabz-release clean deploy
+        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} -P osslabz-release clean release:clean release:prepare release:perform
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
