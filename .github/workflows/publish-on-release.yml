@@ -28,6 +28,10 @@ jobs:
           gpg-private-key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
+      - uses: qoomon/actions--setup-git@v1
+        with:
+          user: actor
+
       - name: publish-on-maven-central
         run: mvn --batch-mode -P osslabz-release clean release:clean release:prepare release:perform
         env:
