@@ -41,8 +41,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/osslabz/crypto-commons.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/osslabz/crypto-commons.git</developerConnection>
+        <connection>scm:git:ssh://github.com/osslabz/crypto-commons.git</connection>
+        <developerConnection>scm:git:ssh://@github.com/osslabz/crypto-commons.git</developerConnection>
         <url>https://github.com/osslabz/crypto-commons</url>
         <tag>main</tag>
     </scm>
