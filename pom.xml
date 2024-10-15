@@ -18,9 +18,11 @@
         <project.build.sourceEncoding>${osslabz.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${osslabz.encoding}</project.reporting.outputEncoding>
 
+        <project.build.outputTimestamp>2024-10-15T00:00:00Z</project.build.outputTimestamp>
+
         <maven.compiler.release>${osslabz.java.version}</maven.compiler.release>
 
-        <lombok.version>1.18.32</lombok.version>
+        <lombok.version>1.18.34</lombok.version>
     </properties>
 
     <licenses>
@@ -80,7 +82,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.5.10</version>
+            <version>1.5.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -94,10 +96,29 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-release-plugin</artifactId>
                         <version>3.1.1</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>nl.basjes.maven.release</groupId>
+                                <artifactId>conventional-commits-version-policy</artifactId>
+                                <version>1.0.7</version>
+                            </dependency>
+                        </dependencies>
                         <configuration>
                             <autoVersionSubmodules>true</autoVersionSubmodules>
                             <useReleaseProfile>false</useReleaseProfile>
                             <releaseProfiles>osslabz-release</releaseProfiles>
+                            <tagNameFormat>@{project.version}</tagNameFormat>
+                            <scmCommentPrefix>[release]</scmCommentPrefix>
+                            <scmReleaseCommitComment>@{prefix} set version to @{releaseLabel}</scmReleaseCommitComment>
+                            <scmDevelopmentCommitComment>@{prefix} prepare for next development iteration
+                            </scmDevelopmentCommitComment>
+                            <projectVersionPolicyId>ConventionalCommitsVersionPolicy</projectVersionPolicyId>
+
+                            <!-- projectVersionPolicyConfig for the ConventionalCommitsVersionPolicy is an XML structure:  -->
+                            <projectVersionPolicyConfig>
+                                <!-- versionTag: A regex with 1 capture group that MUST extract the project.version from the SCM tag. -->
+                                <versionTag>([0-9]+\.[0-9]+\.[0-9]+)$</versionTag>
+                            </projectVersionPolicyConfig>
                             <goals>deploy</goals>
                         </configuration>
                     </plugin>
@@ -183,6 +204,31 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.github.git-commit-id</groupId>
+                <artifactId>git-commit-id-maven-plugin</artifactId>
+                <version>9.0.0</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <injectAllReactorProjects>true</injectAllReactorProjects>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                    </generateGitPropertiesFilename>
+                    <includeOnlyProperties>
+                        <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+                        <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
+                    </includeOnlyProperties>
+                    <commitIdGenerationMode>full</commitIdGenerationMode>
+                </configuration>
             </plugin>
         </plugins>
     </build>
