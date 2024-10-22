@@ -1,4 +1,4 @@
-name: release-from-tag
+name: release-notes-from-tag
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "*.*.*"
 
 jobs:
-  release-from-tag:
+  release-notes-from-tag:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
