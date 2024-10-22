@@ -110,13 +110,10 @@
                             <tagNameFormat>@{project.version}</tagNameFormat>
                             <scmCommentPrefix>[release]</scmCommentPrefix>
                             <scmReleaseCommitComment>@{prefix} set version to @{releaseLabel}</scmReleaseCommitComment>
-                            <scmDevelopmentCommitComment>@{prefix} prepare for next development iteration
-                            </scmDevelopmentCommitComment>
+                            <scmDevelopmentCommitComment>@{prefix} prepare for next development iteration</scmDevelopmentCommitComment>
                             <projectVersionPolicyId>ConventionalCommitsVersionPolicy</projectVersionPolicyId>
 
-                            <!-- projectVersionPolicyConfig for the ConventionalCommitsVersionPolicy is an XML structure:  -->
                             <projectVersionPolicyConfig>
-                                <!-- versionTag: A regex with 1 capture group that MUST extract the project.version from the SCM tag. -->
                                 <versionTag>([0-9]+\.[0-9]+\.[0-9]+)$</versionTag>
                             </projectVersionPolicyConfig>
                             <goals>deploy</goals>
