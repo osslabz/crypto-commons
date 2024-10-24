@@ -11,6 +11,10 @@ public record OhlcAsset(TradingAsset tradingAsset, Interval interval) {
         Objects.requireNonNull(interval, "interval cannot be null");
     }
 
+    public OhlcAsset(Exchange exchange, CurrencyPair currencyPair, Interval interval) {
+        this(new TradingAsset(exchange, currencyPair), interval);
+    }
+
     public OhlcAsset(Exchange exchange, String baseCurrencyCode, String counterCurrencyCode, Interval interval) {
         this(new TradingAsset(exchange, new CurrencyPair(baseCurrencyCode, counterCurrencyCode)), interval);
     }

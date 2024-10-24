@@ -9,9 +9,10 @@ jobs:
   release-notes-from-tag:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
-      - name: Release
+
+      - name: create-release-notes
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
