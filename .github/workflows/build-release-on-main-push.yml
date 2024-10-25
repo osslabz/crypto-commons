@@ -48,9 +48,9 @@ jobs:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
 
       - name: merge-main-to-dev
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          target_branch: dev
-          message: "[release] merge released main back to dev"
-          github_token: $${{secrets.PAT_GH_CI}}
+        run: |
+          git fetch --unshallow
+          git checkout dev
+          git pull
+          git merge --no-ff main -m "[release] auto-merge released main back to dev"
+          git push
