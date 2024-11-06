@@ -33,4 +33,9 @@ public record TradingAsset(Exchange exchange, CurrencyPair currencyPair) {
     public String getLabel() {
         return "%s-%s".formatted(exchange, currencyPair.getLabel());
     }
+
+    @Override
+    public String toString() {
+        return "%s[%s]".formatted(this.getClass().getSimpleName(), this.getLabel());
+    }
 }

@@ -32,4 +32,9 @@ public record CurrencyPair(String baseCurrencyCode, String counterCurrencyCode) 
     public String getLabel() {
         return "%s-%s".formatted(this.baseCurrencyCode, this.counterCurrencyCode);
     }
+
+    @Override
+    public String toString() {
+        return "%s[%s]".formatted(this.getClass().getSimpleName(), this.getLabel());
+    }
 }

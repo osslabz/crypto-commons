@@ -39,4 +39,9 @@ public record OhlcAsset(TradingAsset tradingAsset, Interval interval) {
     public String getLabel() {
         return "%s-%s".formatted(tradingAsset.getLabel(), interval.name());
     }
+
+    @Override
+    public String toString() {
+        return "%s[%s]".formatted(this.getClass().getSimpleName(), this.getLabel());
+    }
 }
