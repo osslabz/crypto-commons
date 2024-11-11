@@ -19,13 +19,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+#         token: ${{secrets.PAT_GH_CI}}
 
       - name: setup-jdk
         uses: actions/setup-java@v4
         with:
           java-version: 21
           distribution: 'temurin'
-          cache: 'maven'
+          cache: maven
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
@@ -33,10 +34,14 @@ jobs:
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       - name: maven-build-verify
-        run: mvn --batch-mode clean verify
+        run: mvn --batch-mode verify
+
+      - uses: qoomon/actions--setup-git@v1
+        with:
+          user: bot
 
       - name: publish-on-maven-central
-        run: mvn --batch-mode -Posslabz-release clean release:clean release:prepare release:perform
+        run: mvn --batch-mode -P osslabz-release clean release:clean release:prepare release:perform
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
