@@ -66,6 +66,4 @@ public enum OrderStatus {
      * The exchange returned a state which is not in the exchange's API documentation. The state of the order cannot be confirmed.
      */
     UNKNOWN;
-
-
 }
