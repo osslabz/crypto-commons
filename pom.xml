@@ -216,7 +216,7 @@
                 <version>9.0.1</version>
                 <executions>
                     <execution>
-                        <id>get-the-git-infos</id>
+                        <id>git-info</id>
                         <goals>
                             <goal>revision</goal>
                         </goals>
@@ -224,11 +224,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <injectAllReactorProjects>true</injectAllReactorProjects>
                     <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
-                    </generateGitPropertiesFilename>
                     <includeOnlyProperties>
+                        <includeOnlyProperty>git.branch</includeOnlyProperty>
                         <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
                         <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
                     </includeOnlyProperties>
