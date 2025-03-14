@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 
@@ -42,6 +43,7 @@ public class Ohlc {
 
     private ZonedDateTime updateTime;
 
+    @ToString.Exclude
     private OhlcKey key;
 
 
