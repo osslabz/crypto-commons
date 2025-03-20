@@ -40,8 +40,11 @@ jobs:
         with:
           user: bot
 
-      - name: publish-on-maven-central
-        run: mvn --batch-mode -P osslabz-release clean release:clean release:prepare release:perform
+      - name: prepare-release
+        run: mvn --batch-mode -P osslabz-release clean release:clean release:prepare -DskipStaging=true
+
+      - name: perform-release-publish-on-maven-central
+        run: mvn --batch-mode -P osslabz-release release:perform
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
