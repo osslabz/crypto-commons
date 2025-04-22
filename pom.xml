@@ -4,7 +4,7 @@
 
     <groupId>net.osslabz</groupId>
     <artifactId>crypto-commons</artifactId>
-    <version>0.6.2-SNAPSHOT</version>
+    <version>0.6.5-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Provides common functionality for some of my crypto related projects.
@@ -18,7 +18,7 @@
         <project.build.sourceEncoding>${osslabz.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${osslabz.encoding}</project.reporting.outputEncoding>
 
-        <project.build.outputTimestamp>2025-03-17T12:11:48Z</project.build.outputTimestamp>
+        <project.build.outputTimestamp>2025-04-22T08:25:25Z</project.build.outputTimestamp>
 
         <maven.compiler.release>${osslabz.java.version}</maven.compiler.release>
 
