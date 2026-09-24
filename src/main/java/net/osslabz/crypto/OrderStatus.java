@@ -69,7 +69,7 @@ public enum OrderStatus {
      */
     UNKNOWN(false);
 
-    private boolean isFinal;
+    private final boolean isFinal;
 
     OrderStatus(boolean isFinal) {
 
