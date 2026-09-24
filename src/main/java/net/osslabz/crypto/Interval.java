@@ -5,9 +5,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Objects;
 
-
 public enum Interval {
-
     PT1M(Duration.ofMinutes(1)),
     PT5M(Duration.ofMinutes(5)),
     PT15M(Duration.ofMinutes(15)),
@@ -19,12 +17,10 @@ public enum Interval {
 
     private final Duration duration;
 
-
     Interval(Duration duration) {
 
         this.duration = duration;
     }
-
 
     @JsonIgnore
     public Duration getDuration() {
@@ -32,15 +28,19 @@ public enum Interval {
         return this.duration;
     }
 
-
     public static Interval ofDuration(Duration duration) {
 
-        return Arrays.stream(Interval.values()).filter(i -> Objects.equals(duration, i.getDuration())).findAny().orElseThrow();
+        return Arrays.stream(Interval.values())
+                .filter(i -> Objects.equals(duration, i.getDuration()))
+                .findAny()
+                .orElseThrow();
     }
-
 
     public static Interval ofMillis(Long millis) {
 
-        return Arrays.stream(Interval.values()).filter(i -> i.getDuration().toMillis() == millis).findAny().orElseThrow();
+        return Arrays.stream(Interval.values())
+                .filter(i -> i.getDuration().toMillis() == millis)
+                .findAny()
+                .orElseThrow();
     }
 }

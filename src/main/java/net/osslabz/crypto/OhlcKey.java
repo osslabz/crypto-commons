@@ -4,7 +4,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-
 public record OhlcKey(OhlcAsset asset, ZonedDateTime openTime) {
 
     public OhlcKey(OhlcAsset asset, ZonedDateTime openTime) {
@@ -15,12 +14,10 @@ public record OhlcKey(OhlcAsset asset, ZonedDateTime openTime) {
         this.openTime = openTime;
     }
 
-
     public String toString() {
 
         return this.getLabel();
     }
-
 
     public String getLabel() {
 

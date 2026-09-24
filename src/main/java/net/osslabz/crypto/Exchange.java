@@ -14,5 +14,4 @@ public enum Exchange {
     LATOKEN,
 
     POLONIEX
-
 }

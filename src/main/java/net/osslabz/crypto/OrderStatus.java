@@ -3,9 +3,7 @@ package net.osslabz.crypto;
 import java.util.Arrays;
 import java.util.List;
 
-
 public enum OrderStatus {
-
     PREPARED(false),
 
     ERROR(true),
@@ -73,18 +71,15 @@ public enum OrderStatus {
 
     private boolean isFinal;
 
-
     OrderStatus(boolean isFinal) {
 
         this.isFinal = isFinal;
     }
 
-
     public boolean isFinal() {
 
         return isFinal;
     }
-
 
     public List<OrderStatus> getFinal() {
 

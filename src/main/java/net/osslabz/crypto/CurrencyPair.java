@@ -1,8 +1,6 @@
 package net.osslabz.crypto;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.Objects;
 
 /**

@@ -3,7 +3,6 @@ package net.osslabz.crypto;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-
 public class CryptoMathUtils {
 
     public static final BigDecimal HUNDRED = BigDecimal.valueOf(100L);
@@ -19,12 +18,16 @@ public class CryptoMathUtils {
 
     public static BigDecimal getPriceDiff(BigDecimal currentPrice, BigDecimal referencePrice) {
 
-        return currentPrice != null && referencePrice != null ? currentPrice.subtract(referencePrice).stripTrailingZeros() : null;
+        return currentPrice != null && referencePrice != null
+                ? currentPrice.subtract(referencePrice).stripTrailingZeros()
+                : null;
     }
 
     public static BigDecimal getPriceDiffAsPercentage(BigDecimal currentPrice, BigDecimal referencePrice) {
 
         BigDecimal diffPrice = getPriceDiff(currentPrice, referencePrice);
-        return diffPrice != null ? diffPrice.divide(referencePrice, 8, RoundingMode.HALF_UP).stripTrailingZeros() : null;
+        return diffPrice != null
+                ? diffPrice.divide(referencePrice, 8, RoundingMode.HALF_UP).stripTrailingZeros()
+                : null;
     }
 }
