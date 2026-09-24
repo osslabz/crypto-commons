@@ -14,6 +14,7 @@ public record OhlcKey(OhlcAsset asset, ZonedDateTime openTime) {
         this.openTime = openTime;
     }
 
+    @Override
     public String toString() {
 
         return this.getLabel();
