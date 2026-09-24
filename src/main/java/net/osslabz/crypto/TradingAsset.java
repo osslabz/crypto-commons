@@ -5,9 +5,6 @@ import java.util.Objects;
 
 /**
  * Identifies a trading asset (a currency pair on a specific exchange).
- *
- * @param exchange
- * @param currencyPair
  */
 public record TradingAsset(Exchange exchange, CurrencyPair currencyPair) {
 

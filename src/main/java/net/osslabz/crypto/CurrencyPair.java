@@ -5,9 +5,6 @@ import java.util.Objects;
 
 /**
  * Identifies a currency pair.
- *
- * @param baseCurrencyCode
- * @param counterCurrencyCode
  */
 public record CurrencyPair(String baseCurrencyCode, String counterCurrencyCode) {
 
