@@ -21,7 +21,10 @@ public record CurrencyPair(String baseCurrencyCode, String counterCurrencyCode) 
         if (!currencyPair.contains("-")) {
             throw new IllegalArgumentException("currencyPair must contain '-'");
         }
-        String[] split = currencyPair.split("-");
+        String[] split = currencyPair.split("-", -1);
+        if (split[0].isEmpty() || split[1].isEmpty()) {
+            throw new IllegalArgumentException("currencyPair must have a currency code on both sides of '-'");
+        }
 
         return new CurrencyPair(split[0], split[1]);
     }

@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CurrencyPairTest {
 
@@ -41,6 +43,13 @@ class CurrencyPairTest {
         IllegalArgumentException e =
                 assertThrows(IllegalArgumentException.class, () -> CurrencyPair.fromString("BTCUSDT"));
         assertEquals("currencyPair must contain '-'", e.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"BTC-", "-USDT", "-", "BTC--USDT"})
+    void rejectsLabelWithAnEmptyCode(String label) {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> CurrencyPair.fromString(label));
+        assertEquals("currencyPair must have a currency code on both sides of '-'", e.getMessage());
     }
 
     @Test
