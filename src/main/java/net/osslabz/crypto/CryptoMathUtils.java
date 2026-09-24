@@ -13,7 +13,7 @@ public class CryptoMathUtils {
 
     public static boolean isLargerZero(BigDecimal value) {
 
-        return value != null && value.compareTo(java.math.BigDecimal.ZERO) > 0;
+        return value != null && value.compareTo(BigDecimal.ZERO) > 0;
     }
 
     public static BigDecimal getPriceDiff(BigDecimal currentPrice, BigDecimal referencePrice) {

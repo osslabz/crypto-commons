@@ -83,6 +83,6 @@ public enum OrderStatus {
 
     public List<OrderStatus> getFinal() {
 
-        return Arrays.stream(OrderStatus.values()).filter(OrderStatus::isFinal).toList();
+        return Arrays.stream(values()).filter(OrderStatus::isFinal).toList();
     }
 }

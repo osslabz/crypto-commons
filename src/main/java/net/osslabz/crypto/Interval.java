@@ -30,7 +30,7 @@ public enum Interval {
 
     public static Interval ofDuration(Duration duration) {
 
-        return Arrays.stream(Interval.values())
+        return Arrays.stream(values())
                 .filter(i -> Objects.equals(duration, i.getDuration()))
                 .findAny()
                 .orElseThrow();
@@ -38,7 +38,7 @@ public enum Interval {
 
     public static Interval ofMillis(Long millis) {
 
-        return Arrays.stream(Interval.values())
+        return Arrays.stream(values())
                 .filter(i -> i.getDuration().toMillis() == millis)
                 .findAny()
                 .orElseThrow();
