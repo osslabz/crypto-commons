@@ -3,7 +3,7 @@ package net.osslabz.crypto;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class CryptoMathUtils {
+public final class CryptoMathUtils {
 
     public static final BigDecimal HUNDRED = BigDecimal.valueOf(100L);
 
