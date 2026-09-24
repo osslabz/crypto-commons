@@ -10,8 +10,8 @@ Contains some common classes used by various other crypto related projects.
 
 There probably won't be any benefit for anybody to use this directly, it's pulled transitively when required.
 
-0.6.4 is from April 2025, the last of 23 releases since June 2024. There are no tests, the source hasn't changed since March 2025, and the
-known users are mexc-client and two private projects of mine.
+0.6.4 is from April 2025, the last of 23 releases since June 2024. The known users are mexc-client and two private projects
+of mine.
 
 Current release:
 
