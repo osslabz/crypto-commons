@@ -5,24 +5,25 @@ import java.time.ZonedDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 
 /**
  * A snapshot of an order on an exchange.
  *
  * <p>Two snapshots are equal when they share asset, exchange order id and client order id, whatever
- * their status or fill.
+ * their status or fill. Those three fields are fixed at construction, so an order keeps its place in
+ * a hash-based collection.
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
+@Jacksonized
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Order {
 
     @EqualsAndHashCode.Include
-    private TradingAsset asset;
+    private final TradingAsset asset;
 
     private OrderAction action;
 
@@ -31,10 +32,10 @@ public class Order {
     private OrderStatus status;
 
     @EqualsAndHashCode.Include
-    private String exchangeOrderId;
+    private final String exchangeOrderId;
 
     @EqualsAndHashCode.Include
-    private String clientOrderId;
+    private final String clientOrderId;
 
     private BigDecimal quantity;
 

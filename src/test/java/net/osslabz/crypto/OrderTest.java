@@ -3,6 +3,7 @@ package net.osslabz.crypto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 
@@ -60,6 +61,20 @@ class OrderTest {
 
         assertNotEquals(
                 placedOrder(BTC_USDT, "order-1", "client-1"), placedOrder(btcUsdtElsewhere, "order-1", "client-1"));
+    }
+
+    @Test
+    void survivesAJsonRoundTrip() throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Order order = placedOrder(BTC_USDT, "order-1", "client-1").toBuilder()
+                .cumulativeQuantity(new BigDecimal("0.25"))
+                .fee(new BigDecimal("0.001"))
+                .build();
+
+        Order copy = objectMapper.readValue(objectMapper.writeValueAsString(order), Order.class);
+
+        assertEquals(order, copy);
+        assertEquals(order.toString(), copy.toString());
     }
 
     private static Order placedOrder(TradingAsset asset, String exchangeOrderId, String clientOrderId) {
