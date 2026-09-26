@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class OrderTest {
 
@@ -75,6 +77,14 @@ class OrderTest {
 
         assertEquals(order, copy);
         assertEquals(order.toString(), copy.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"POST_ONLY", "IMMEDIATE_OR_CANCEL", "FILL_OR_KILL", "STOP_LOSS_TAKE_PROFIT"})
+    void readsTheOrderTypesBeyondMarketAndLimitFromJson(String type) throws Exception {
+        Order order = new ObjectMapper().readValue("{\"type\":\"%s\"}".formatted(type), Order.class);
+
+        assertEquals(type, order.getType().name());
     }
 
     private static Order placedOrder(TradingAsset asset, String exchangeOrderId, String clientOrderId) {
